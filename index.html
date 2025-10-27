@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BSIS — Integrating Applications (Case-Based, 50 Qs)</title>
+<style>
+  :root{font-family:Arial,Helvetica,sans-serif;color:#0f172a}
+  body{background:#f3f4f6;margin:0;padding:24px;line-height:1.45}
+  .wrap{max-width:980px;margin:0 auto}
+  header{display:flex;align-items:center;gap:16px;background:#fff;padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,23,.06)}
+  header h1{font-size:1.05rem;margin:0}
+  .timer{margin-left:auto;background:#fff2f2;color:#9b111e;padding:8px 12px;border-radius:999px;font-weight:700;box-shadow:inset 0 0 0 1px rgba(155,17,30,.06)}
+  .card{background:#fff;padding:18px;margin-top:18px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,23,.04)}
+  label{display:block;font-weight:700;margin-bottom:6px}
+  .meta{color:#6b7280;margin-bottom:12px}
+  select,input[type=text]{width:100%;padding:10px;border-radius:8px;border:1px solid #e5e7eb;margin-bottom:12px;font-size:0.95rem}
+  button{background:#1f6feb;color:#fff;padding:10px 14px;border-radius:10px;border:none;font-weight:700;cursor:pointer}
+  button.secondary{background:#eef2ff;color:#1f6feb}
+  .muted{color:#6b7280;font-size:.9rem}
+  .question{padding:12px;border-radius:8px;border:1px solid #eef2f5;margin-bottom:12px;background:#fbfcfe}
+  .qcase{font-weight:600;margin-bottom:8px}
+  .small{font-size:.92rem;color:#374151}
+  #submitMsg{display:none;margin-top:12px;padding:10px;border-radius:8px;background:#ecfdf5;color:#065f46;font-weight:700}
+  @media(min-width:800px){ header h1{font-size:1.15rem} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>BSIS Exam — Integrating Applications (Case-Based, Logical)</h1>
+    <div class="timer" id="timer">35:00</div>
+  </header>
+
+  <div class="card" id="accessCodeSection">
+    <label>Enter Exam Access Code</label>
+    <input id="examCodeInput" type="text" placeholder="Enter access code (provided by instructor)" />
+    <div style="display:flex;gap:8px;align-items:center">
+      <button id="examCodeBtn">Start Exam</button>
+      <div class="muted" style="margin-left:auto">Access code required — contact your instructor</div>
+    </div>
+    <p id="codeError" class="muted" style="color:#b91c1c;display:none;margin-top:8px">Incorrect code. Try again.</p>
+  </div>
+
+  <form id="examForm" class="card" autocomplete="off" style="display:none">
+    <label>Student Name</label>
+    <input id="studentName" type="text" placeholder="Last name, First name" />
+
+    <p class="meta">Instructions: All questions are case-based or scenario-driven. Choose the most logical answer (A–D). No question ordering shuffle.</p>
+
+    <!-- QUESTIONS 1–50 (case-based) -->
+    <div id="questions">
+
+      <!-- 1 -->
+      <div class="question">
+        <div class="qcase">Case 1 — Retail integration</div>
+        <div class="small">A retail chain links POS, inventory, and accounting so a sale triggers stock decrement and immediate ledger update. Which integration level is primary?</div>
+        <label>1.</label>
+        <select name="q1">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. User Interface-Level Integration</option>
+          <option value="B">B. Data-Level Integration</option>
+          <option value="C">C. Business Process-Level Integration</option>
+          <option value="D">D. Legacy Integration</option>
+        </select>
+      </div>
+
+      <!-- 2 -->
+      <div class="question">
+        <div class="qcase">Case 2 — Legacy adapter</div>
+        <div class="small">A hospital exposes a mainframe patient record via an adapter that converts legacy calls to REST APIs so modern apps can fetch records. What is this?</div>
+        <label>2.</label>
+        <select name="q2">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Point-to-Point Integration</option>
+          <option value="B">B. Legacy Integration with an adapter</option>
+          <option value="C">C. File-Based Sync</option>
+          <option value="D">D. UI-Level Mashup</option>
+        </select>
+      </div>
+
+      <!-- 3 -->
+      <div class="question">
+        <div class="qcase">Case 3 — API-layering</div>
+        <div class="small">An airline organizes APIs into System, Process, and Experience layers to reuse endpoints across apps. What approach is this?</div>
+        <label>3.</label>
+        <select name="q3">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. ESB Architecture</option>
+          <option value="B">B. API-Led Integration</option>
+          <option value="C">C. Point-to-Point</option>
+          <option value="D">D. File-Based Integration</option>
+        </select>
+      </div>
+
+      <!-- 4 -->
+      <div class="question">
+        <div class="qcase">Case 4 — XML validation</div>
+        <div class="small">A supplier requires each order message be validated with an XSD before processing. Which XML best practice is applied?</div>
+        <label>4.</label>
+        <select name="q4">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Compression for performance</option>
+          <option value="B">B. Schema validation using XSD</option>
+          <option value="C">C. Obfuscation of tags</option>
+          <option value="D">D. Using XML only for human-readability</option>
+        </select>
+      </div>
+
+      <!-- 5 -->
+      <div class="question">
+        <div class="qcase">Case 5 — ESB performance tuning</div>
+        <div class="small">An ESB handles many synchronous transformations and becomes a bottleneck. Which optimization is best?</div>
+        <label>5.</label>
+        <select name="q5">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Replace ESB with file transfers</option>
+          <option value="B">B. Introduce asynchronous messaging and load balancing</option>
+          <option value="C">C. Hard-code endpoints for each service</option>
+          <option value="D">D. Disable monitoring to speed messages</option>
+        </select>
+      </div>
+
+      <!-- 6 -->
+      <div class="question">
+        <div class="qcase">Case 6 — Single sign-on portal</div>
+        <div class="small">A university portal lets students log in once to access enrollment, grades, and payment modules hosted separately. What integration type is most visible?</div>
+        <label>6.</label>
+        <select name="q6">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Data-Level Integration</option>
+          <option value="B">B. User Interface-Level Integration (single portal)</option>
+          <option value="C">C">C. File-Based Batch Integration</option>
+          <option value="D">D. Point-to-Point Sync</option>
+        </select>
+      </div>
+
+      <!-- 7 -->
+      <div class="question">
+        <div class="qcase">Case 7 — Transactional consistency</div>
+        <div class="small">A bank needs atomic updates across ledger and notifications. Which pattern helps ensure coordinated multi-system transactions?</div>
+        <label>7.</label>
+        <select name="q7">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Event-driven eventual consistency</option>
+          <option value="B">B. Two-phase commit / orchestration (process-level)</option>
+          <option value="C">C. Manual reconciliation</option>
+          <option value="D">D. Pure UI-level combination</option>
+        </select>
+      </div>
+
+      <!-- 8 -->
+      <div class="question">
+        <div class="qcase">Case 8 — Data mapping failure</div>
+        <div class="small">During integration, customer records show mismatched fields because source and target use different field names. What best practice fixes this?</div>
+        <label>8.</label>
+        <select name="q8">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Ignore mismatches and accept nulls</option>
+          <option value="B">B. Implement a canonical data model and explicit mapping/transformation</option>
+          <option value="C">C. Replace target schema to match each source</option>
+          <option value="D">D. Export to CSV and manually edit</option>
+        </select>
+      </div>
+
+      <!-- 9 -->
+      <div class="question">
+        <div class="qcase">Case 9 — IoT streaming</div>
+        <div class="small">Sensors send continuous readings to analytics in near-real-time via streaming APIs. Which integration style fits?</div>
+        <label>9.</label>
+        <select name="q9">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Batch ETL</option>
+          <option value="B">B. Real-time event-driven integration (streaming)</option>
+          <option value="C">C. UI mashup</option>
+          <option value="D">D. Legacy polling</option>
+        </select>
+      </div>
+
+      <!-- 10 -->
+      <div class="question">
+        <div class="qcase">Case 10 — Rate limiting</div>
+        <div class="small">A cloud API imposes rate limits. Which safeguard avoids service interruptions when limits are reached?</div>
+        <label>10.</label>
+        <select name="q10">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Circuit breaker with retry/backoff and caching</option>
+          <option value="B">B. Remove authentication to speed up calls</option>
+          <option value="C">C. Continuous parallel retries</option>
+          <option value="D">D. Increase request frequency</option>
+        </select>
+      </div>
+
+      <!-- 11 -->
+      <div class="question">
+        <div class="qcase">Case 11 — Hub-and-spoke normalization</div>
+        <div class="small">Multiple logistics partners send different formats; a central middleware normalizes them. Which strategy is shown?</div>
+        <label>11.</label>
+        <select name="q11">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Point-to-Point</option>
+          <option value="B">B. Hub-and-Spoke Integration</option>
+          <option value="C">C. Monolithic DB merge</option>
+          <option value="D">D. UI-level embedding</option>
+        </select>
+      </div>
+
+      <!-- 12 -->
+      <div class="question">
+        <div class="qcase">Case 12 — Audit logging</div>
+        <div class="small">A compliance system requires a tamper-proof log of all integration events. Which feature is essential?</div>
+        <label>12.</label>
+        <select name="q12">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Centralized immutable audit logs with timestamps</option>
+          <option value="B">B. Local temporary logs only</option>
+          <option value="C">C. Silent failure ignores</option>
+          <option value="D">D. Only UI notifications</option>
+        </select>
+      </div>
+
+      <!-- 13 -->
+      <div class="question">
+        <div class="qcase">Case 13 — Synchronous vs asynchronous</div>
+        <div class="small">A workflow triggers long-running reports. To avoid blocking callers, which pattern should be used?</div>
+        <label>13.</label>
+        <select name="q13">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Synchronous blocking call</option>
+          <option value="B">B">B. Asynchronous messaging with callback/status</option>
+          <option value="C">C. Polling every second</option>
+          <option value="D">D. Single-threaded processing</option>
+        </select>
+      </div>
+
+      <!-- 14 -->
+      <div class="question">
+        <div class="qcase">Case 14 — Data duplication risk</div>
+        <div class="small">Two systems each keep their own master copy of customer data, leading to different addresses. Which approach reduces duplication?</div>
+        <label>14.</label>
+        <select name="q14">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Master Data Management (central source of truth)</option>
+          <option value="B">B">B. Continue duplicate copies</option>
+          <option value="C">C. Ad-hoc CSV sync</option>
+          <option value="D">D. Remove data validation</option>
+        </select>
+      </div>
+
+      <!-- 15 -->
+      <div class="question">
+        <div class="qcase">Case 15 — API versioning</div>
+        <div class="small">A public API must change response structure; which strategy prevents breaking existing clients?</div>
+        <label>15.</label>
+        <select name="q15">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Version the API and maintain backward compatibility</option>
+          <option value="B">B">B. Change contract without notice</option>
+          <option value="C">C. Block old clients permanently</option>
+          <option value="D">D. Only update client code centrally</option>
+        </select>
+      </div>
+
+      <!-- 16 -->
+      <div class="question">
+        <div class="qcase">Case 16 — Security between tenants</div>
+        <div class="small">Multi-tenant integration shares a middleware; tenants must not access each other's data. Which is required?</div>
+        <label>16.</label>
+        <select name="q16">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Strong tenant isolation, token-based auth and RBAC</option>
+          <option value="B">B">B. Shared credentials for simplicity</option>
+          <option value="C">C. No encryption within network</option>
+          <option value="D">D. Sideloaded data files</option>
+        </select>
+      </div>
+
+      <!-- 17 -->
+      <div class="question">
+        <div class="qcase">Case 17 — Monitoring integration health</div>
+        <div class="small">You need to detect failed message flows quickly. Which capability helps most?</div>
+        <label>17.</label>
+        <select name="q17">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Real-time monitoring and alerts for failed transactions</option>
+          <option value="B">B">B. Manual log checks weekly</option>
+          <option value="C">C. No monitoring—trust system</option>
+          <option value="D">D. Print logs to paper</option>
+        </select>
+      </div>
+
+      <!-- 18 -->
+      <div class="question">
+        <div class="qcase">Case 18 — Deprecating legacy</div>
+        <div class="small">A project replaces a legacy system but wants to minimize disruption. What migration tactic reduces risk?</div>
+        <label>18.</label>
+        <select name="q18">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Strangler pattern (incremental replacement)</option>
+          <option value="B">B">B. Big-bang rip-and-replace</option>
+          <option value="C">C. Shut down legacy immediately</option>
+          <option value="D">D. Manual paper processes</option>
+        </select>
+      </div>
+
+      <!-- 19 -->
+      <div class="question">
+        <div class="qcase">Case 19 — Data latency requirement</div>
+        <div class="small">An operations dashboard requires near-instant inventory updates. Which integration guarantee should be targeted?</div>
+        <label>19.</label>
+        <select name="q19">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Near real-time with event-driven streams</option>
+          <option value="B">B">B. Nightly batch ETL</option>
+          <option value="C">C. Weekly sync</option>
+          <option value="D">D. Manual reconciliation</option>
+        </select>
+      </div>
+
+      <!-- 20 -->
+      <div class="question">
+        <div class="qcase">Case 20 — Transaction retry</div>
+        <div class="small">A payment API occasionally times out. What retry policy is safest?</div>
+        <label>20.</label>
+        <select name="q20">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Exponential backoff with idempotency keys</option>
+          <option value="B">B">B. Immediate repeated retries without limits</option>
+          <option value="C">C. No retries—fail silently</option>
+          <option value="D">D. Retry forever</option>
+        </select>
+      </div>
+
+      <!-- 21 -->
+      <div class="question">
+        <div class="qcase">Case 21 — Transformation responsibility</div>
+        <div class="small">Where should heavy data transformations (format mapping) ideally occur?</div>
+        <label>21.</label>
+        <select name="q21">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. At the integration/middleware layer</option>
+          <option value="B">B">B. In every client application</option>
+          <option value="C">C. In user interface code</option>
+          <option value="D">D. Only in the target DB via triggers</option>
+        </select>
+      </div>
+
+      <!-- 22 -->
+      <div class="question">
+        <div class="qcase">Case 22 — Data contract enforcement</div>
+        <div class="small">APIs must enforce agreed payloads to avoid downstream errors. Best mechanism?</div>
+        <label>22.</label>
+        <select name="q22">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Use schema validation at gateway and version contracts</option>
+          <option value="B">B">B. Let clients send any payload</option>
+          <option value="C">C. Convert at client side only</option>
+          <option value="D">D. No validation</option>
+        </select>
+      </div>
+
+      <!-- 23 -->
+      <div class="question">
+        <div class="qcase">Case 23 — High availability</div>
+        <div class="small">An integration hub must not be a single point of failure. Which design increases availability?</div>
+        <label>23.</label>
+        <select name="q23">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Horizontal redundancy and stateless processing</option>
+          <option value="B">B">B. Single server with local backups</option>
+          <option value="C">C. Manual failover only</option>
+          <option value="D">D. Turn off monitoring</option>
+        </select>
+      </div>
+
+      <!-- 24 -->
+      <div class="question">
+        <div class="qcase">Case 24 — Minimal coupling</div>
+        <div class="small">Team wants integrations that allow independent deployment of services. Which style supports this most?</div>
+        <label>24.</label>
+        <select name="q24">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Loosely coupled APIs with clear contracts</option>
+          <option value="B">B">B. Tight point-to-point dependencies</option>
+          <option value="C">C. Shared monolithic DB coupling</option>
+          <option value="D">D. Integrated UI only</option>
+        </select>
+      </div>
+
+      <!-- 25 -->
+      <div class="question">
+        <div class="qcase">Case 25 — Data privacy</div>
+        <div class="small">Customer PII flows between systems. What is essential for compliance?</div>
+        <label>25.</label>
+        <select name="q25">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Encryption in transit and at rest, access controls, and auditing</option>
+          <option value="B">B">B. Plain text logs</option>
+          <option value="C">C. Public APIs with no auth</option>
+          <option value="D">D. No record retention</option>
+        </select>
+      </div>
+
+      <!-- 26 -->
+      <div class="question">
+        <div class="qcase">Case 26 — Cross-system workflow</div>
+        <div class="small">An order process requires steps across ERP, warehouse, and finance in sequence with rollback on failure. Which capability is required?</div>
+        <label>26.</label>
+        <select name="q26">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Orchestration with compensation/rollback</option>
+          <option value="B">B">B. Loose eventual consistency only</option>
+          <option value="C">C. UI-only coordination</option>
+          <option value="D">D. Manual reconciliation</option>
+        </select>
+      </div>
+
+      <!-- 27 -->
+      <div class="question">
+        <div class="qcase">Case 27 — Schema evolution</div>
+        <div class="small">You add a new optional field to outputs. To avoid breaking clients, you should:</div>
+        <label>27.</label>
+        <select name="q27">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Add new optional field and keep default behavior for old clients</option>
+          <option value="B">B">B. Remove fields clients rely on</option>
+          <option value="C">C. Stop the API</option>
+          <option value="D">D. Force immediate client changes</option>
+        </select>
+      </div>
+
+      <!-- 28 -->
+      <div class="question">
+        <div class="qcase">Case 28 — Bulk data load</div>
+        <div class="small">Large historical data must be imported to analytics without disturbing live services. Which is best?</div>
+        <label>28.</label>
+        <select name="q28">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Bulk load in isolated pipeline and backfill safely</option>
+          <option value="B">B">B. Load directly into prod DB during business hours</option>
+          <option value="C">C. Drop live DB and replace</option>
+          <option value="D">D. Manual data entry</option>
+        </select>
+      </div>
+
+      <!-- 29 -->
+      <div class="question">
+        <div class="qcase">Case 29 — Contract testing</div>
+        <div class="small">To ensure provider and consumer compatibility, which automated test is helpful?</div>
+        <label>29.</label>
+        <select name="q29">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Provider-consumer contract tests (contract testing)</option>
+          <option value="B">B">B. Manual UI tests only</option>
+          <option value="C">C. No tests</option>
+          <option value="D">D. Only unit tests on provider internals</option>
+        </select>
+      </div>
+
+      <!-- 30 -->
+      <div class="question">
+        <div class="qcase">Case 30 — Partial failures</div>
+        <div class="small">Some messages fail intermittently during spikes. Which mechanism prevents data loss?</div>
+        <label>30.</label>
+        <select name="q30">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Durable message queues with DLQ (dead-letter queue)</option>
+          <option value="B">B">B. Toss failed messages away</option>
+          <option value="C">C. Ignore retries</option>
+          <option value="D">D. Rely on human re-entry</option>
+        </select>
+      </div>
+
+      <!-- 31 -->
+      <div class="question">
+        <div class="qcase">Case 31 — Performance benchmarks</div>
+        <div class="small">Before rolling out new integration, you must ensure SLA. Which is most useful?</div>
+        <label>31.</label>
+        <select name="q31">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Load and stress testing with realistic scenarios</option>
+          <option value="B">B">B. No tests in production only</option>
+          <option value="C">C. Single quick smoke test</option>
+          <option value="D">D. Only unit tests offline</option>
+        </select>
+      </div>
+
+      <!-- 32 -->
+      <div class="question">
+        <div class="qcase">Case 32 — Audit trail correlation</div>
+        <div class="small">To trace an individual user action across services, what should be propagated?</div>
+        <label>32.</label>
+        <select name="q32">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Distributed tracing identifiers (correlation IDs)</option>
+          <option value="B">B">B. Random local logs only</option>
+          <option value="C">C. No identifiers</option>
+          <option value="D">D. Only per-service timestamps</option>
+        </select>
+      </div>
+
+      <!-- 33 -->
+      <div class="question">
+        <div class="qcase">Case 33 — Retry idempotency</div>
+        <div class="small">To safely retry an operation (e.g., payment), what must the API support?</div>
+        <label>33.</label>
+        <select name="q33">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Idempotency keys or idempotent operations</option>
+          <option value="B">B">B. Increase payments per retry</option>
+          <option value="C">C. Randomize transaction IDs each try</option>
+          <option value="D">D. Always rollback without tracking</option>
+        </select>
+      </div>
+
+      <!-- 34 -->
+      <div class="question">
+        <div class="qcase">Case 34 — Data residency</div>
+        <div class="small">Legal rules require some data remain in-country. What integration control helps meet this?</div>
+        <label>34.</label>
+        <select name="q34">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Data-routing policies and geo-fencing in middleware</option>
+          <option value="B">B">B. Ignore residency laws</option>
+          <option value="C">C. Move everything to any cloud region</option>
+          <option value="D">D. Publish all data publicly</option>
+        </select>
+      </div>
+
+      <!-- 35 -->
+      <div class="question">
+        <div class="qcase">Case 35 — Partial integration testing</div>
+        <div class="small">You want to test only a new connector in a sandbox without affecting prod. What approach?</div>
+        <label>35.</label>
+        <select name="q35">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Use test/staging instances and synthetic test data</option>
+          <option value="B">B">B. Run tests on production DB directly</option>
+          <option value="C">C. Manual data edits in prod</option>
+          <option value="D">D. No testing</option>
+        </select>
+      </div>
+
+      <!-- 36 -->
+      <div class="question">
+        <div class="qcase">Case 36 — Throttling strategy</div>
+        <div class="small">To protect backend systems from spikes, where should limits be applied?</div>
+        <label>36.</label>
+        <select name="q36">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. At API gateway with quota & throttling rules</option>
+          <option value="B">B">B. No throttling</option>
+          <option value="C">C. Client-side only without server checks</option>
+          <option value="D">D. On DB only</option>
+        </select>
+      </div>
+
+      <!-- 37 -->
+      <div class="question">
+        <div class="qcase">Case 37 — Message format negotiation</div>
+        <div class="small">Two partners prefer different payloads. Best long-term solution?</div>
+        <label>37.</label>
+        <select name="q37">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Implement a canonical format and translators at edges</option>
+          <option value="B">B">B. Force one partner to change immediately</option>
+          <option value="C">C. Allow all free-form payloads</option>
+          <option value="D">D. Exchange screenshots</option>
+        </select>
+      </div>
+
+      <!-- 38 -->
+      <div class="question">
+        <div class="qcase">Case 38 — Graceful degradation</div>
+        <div class="small">If an external pricing service is down, what should the front-end show to remain usable?</div>
+        <label>38.</label>
+        <select name="q38">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Cached last-known price with "stale" indicator and fallback</option>
+          <option value="B">B">B. Crash the app</option>
+          <option value="C">C. Show blank fields</option>
+          <option value="D">D. Expose raw error details to users</option>
+        </select>
+      </div>
+
+      <!-- 39 -->
+      <div class="question">
+        <div class="qcase">Case 39 — Licensing and third-party connectors</div>
+        <div class="small">Using a proprietary connector saves dev time but adds licensing costs. What decision factor matters most?</div>
+        <label>39.</label>
+        <select name="q39">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Total cost of ownership and vendor lock-in risk</option>
+          <option value="B">B">B. Only initial purchase price</option>
+          <option value="C">C. Ignore licensing entirely</option>
+          <option value="D">D. Build from scratch regardless of cost</option>
+        </select>
+      </div>
+
+      <!-- 40 -->
+      <div class="question">
+        <div class="qcase">Case 40 — Cross-domain auth</div>
+        <div class="small">A portal accesses multiple domains; to avoid repeated logins, which approach should be implemented?</div>
+        <label>40.</label>
+        <select name="q40">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Single Sign-On (SSO) and federated identity</option>
+          <option value="B">B">B. Separate credentials for each domain</option>
+          <option value="C">C. Share a single global password file</option>
+          <option value="D">D. No authentication</option>
+        </select>
+      </div>
+
+      <!-- 41 -->
+      <div class="question">
+        <div class="qcase">Case 41 — Data retention rules</div>
+        <div class="small">Regulators require certain records retained for 7 years. Which integration obligation supports this?</div>
+        <label>41.</label>
+        <select name="q41">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Archival pipeline and immutable storage for retention</option>
+          <option value="B">B">B. Delete old records immediately</option>
+          <option value="C">C. Only keep logs locally for 24 hours</option>
+          <option value="D">D. No retention policy</option>
+        </select>
+      </div>
+
+      <!-- 42 -->
+      <div class="question">
+        <div class="qcase">Case 42 — Data quality checks</div>
+        <div class="small">Before writing to target DB, you must ensure required fields exist. Where to implement this?</div>
+        <label>42.</label>
+        <select name="q42">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Validation rules at middleware/gateway</option>
+          <option value="B">B">B. Ignore checks</option>
+          <option value="C">C. Rely on UI users to enter correct data</option>
+          <option value="D">D. Fix later via manual scripts</option>
+        </select>
+      </div>
+
+      <!-- 43 -->
+      <div class="question">
+        <div class="qcase">Case 43 — Separation of concerns</div>
+        <div class="small">Where should authentication be handled to avoid duplication across microservices?</div>
+        <label>43.</label>
+        <select name="q43">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Central auth service / gateway that issues tokens</option>
+          <option value="B">B">B. Each microservice implements its own auth separately</option>
+          <option value="C">C. No auth needed</option>
+          <option value="D">D. Hard-coded usernames in service code</option>
+        </select>
+      </div>
+
+      <!-- 44 -->
+      <div class="question">
+        <div class="qcase">Case 44 — Cross-team ownership</div>
+        <div class="small">Multiple teams depend on shared APIs. What governance helps long-term stability?</div>
+        <label>44.</label>
+        <select name="q44">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. API ownership, lifecycle policy, and change review board</option>
+          <option value="B">B">B. No governance—teams change freely</option>
+          <option value="C">C. Random undocumented changes</option>
+          <option value="D">D. Remove API docs</option>
+        </select>
+      </div>
+
+      <!-- 45 -->
+      <div class="question">
+        <div class="qcase">Case 45 — Cost optimization</div>
+        <div class="small">An integration pipeline processes millions of messages. What lowers cloud costs without harming SLAs?</div>
+        <label>45.</label>
+        <select name="q45">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Use batch processing where latency tolerance allows and use reserved instances</option>
+          <option value="B">B">B. Process all messages synchronously in most expensive tier</option>
+          <option value="C">C. Delete historical data aggressively</option>
+          <option value="D">D. Remove monitoring to save compute</option>
+        </select>
+      </div>
+
+      <!-- 46 -->
+      <div class="question">
+        <div class="qcase">Case 46 — Consumer-driven contracts</div>
+        <div class="small">To avoid breaking consumers when refactoring provider internals, which practice is recommended?</div>
+        <label>46.</label>
+        <select name="q46">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Maintain stable public API and use consumer-driven contract tests</option>
+          <option value="B">B">B. Change API freely</option>
+          <option value="C">C. Remove public API and only share DB access</option>
+          <option value="D">D. Ignore consumers</option>
+        </select>
+      </div>
+
+      <!-- 47 -->
+      <div class="question">
+        <div class="qcase">Case 47 — Observability signals</div>
+        <div class="small">Which combination gives best insight into integration behavior?</div>
+        <label>47.</label>
+        <select name="q47">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Metrics, logs, and distributed traces</option>
+          <option value="B">B">B. Only logs</option>
+          <option value="C">C. Only metrics</option>
+          <option value="D">D. No signals</option>
+        </select>
+      </div>
+
+      <!-- 48 -->
+      <div class="question">
+        <div class="qcase">Case 48 — Backwards compatibility</div>
+        <div class="small">A partner still needs old responses. Best rollout strategy for a new response format?</div>
+        <label>48.</label>
+        <select name="q48">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Support both old and new formats concurrently and deprecate slowly</option>
+          <option value="B">B">B. Switch format immediately and block old clients</option>
+          <option value="C">C. Remove partner access</option>
+          <option value="D">D. Only publish new docs</option>
+        </select>
+      </div>
+
+      <!-- 49 -->
+      <div class="question">
+        <div class="qcase">Case 49 — Message ordering</div>
+        <div class="small">An inventory system requires processing events in strict order. Which queue behavior is required?</div>
+        <label>49.</label>
+        <select name="q49">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Ordered, single-partition processing or sequence guarantees</option>
+          <option value="B">B">B. Random unordered processing</option>
+          <option value="C">C. Drop order information</option>
+          <option value="D">D. Only use batch deletes</option>
+        </select>
+      </div>
+
+      <!-- 50 -->
+      <div class="question">
+        <div class="qcase">Case 50 — Final integration decision</div>
+        <div class="small">Given limited budget, high compliance needs, and many legacy endpoints — which gradual strategy balances risk and cost?</div>
+        <label>50.</label>
+        <select name="q50">
+          <option value="">-- Select Answer --</option>
+          <option value="A">A. Strangler pattern + API-led adapters prioritized by risk</option>
+          <option value="B">B">B. Complete immediate rip-and-replace</option>
+          <option value="C">C. Stop all integrations</option>
+          <option value="D">D. Manual Excel processes forever</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div style="display:flex;gap:10px;align-items:center;margin-top:10px">
+      <button type="submit" id="submitBtn">Submit Answers</button>
+      <button type="button" id="downloadBtn" class="secondary" disabled>Download Results (.txt)</button>
+      <div style="margin-left:auto" class="muted">Make sure name is filled before submit.</div>
+    </div>
+
+    <div id="submitMsg"></div>
+  </form>
+</div>
+
+<script>
+(function(){
+  // === Config
+  const ACCESS_CODE = "PAKSIT2025";
+  const PASS_PERCENT = 90;
+  const START_SECONDS = 35 * 60;
+  let totalSeconds = START_SECONDS, timerInterval = null, examStarted = false;
+
+  // === Correct answers for Q1..Q50
+  const correctAnswers = [
+    "C","B","B","B","B","B","B","B","B","A", // 1-10
+    "B","A","B","A","A","A","A","A","A","A", // 11-20
+    "A","A","A","A","A","A","A","A","A","A", // 21-30
+    "A","A","A","A","A","A","A","A","A","A", // 31-40
+    "A","A","A","A","A","A","A","A","A","A"  // 41-50
+  ];
+  // Note: the array values correspond to the intended correct option letter for each question above.
+
+  // === Elements
+  const timerEl = document.getElementById('timer');
+  const examForm = document.getElementById('examForm');
+  const accessSection = document.getElementById('accessCodeSection');
+  const examCodeBtn = document.getElementById('examCodeBtn');
+  const examCodeInput = document.getElementById('examCodeInput');
+  const codeError = document.getElementById('codeError');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const submitMsg = document.getElementById('submitMsg');
+
+  // === Timer functions
+  function updateTimerDisplay(){
+    const m = Math.floor(totalSeconds/60);
+    const s = totalSeconds % 60;
+    timerEl.textContent = (m<10? '0'+m : m) + ':' + (s<10? '0'+s : s);
+  }
+  function startTimer(){
+    clearInterval(timerInterval);
+    timerInterval = setInterval(()=>{
+      totalSeconds--;
+      if(totalSeconds <= 0){
+        clearInterval(timerInterval);
+        lockExam();
+        return;
+      }
+      updateTimerDisplay();
+    },1000);
+  }
+  function lockExam(){
+    examForm.querySelectorAll('select,input').forEach(el => el.disabled = true);
+    submitMsg.style.display = 'block';
+    submitMsg.textContent = '⏰ Time is up. Exam ended. Auto-submitting...';
+    submitAnswers(true);
+  }
+
+  // === Anti-cheat
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('cut', e => e.preventDefault());
+  document.addEventListener('selectstart', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if((e.ctrlKey || e.metaKey) && ['c','x','u','s','a','p'].includes(e.key.toLowerCase())) e.preventDefault();
+  });
+
+  function resetExam(reason){
+    if(!examStarted) return;
+    alert('Exam reset due to ' + reason + '. The page will reload.');
+    location.reload();
+  }
+  document.addEventListener('visibilitychange', ()=> { if(document.hidden && examStarted) resetExam('tab change'); });
+  window.addEventListener('blur', ()=> { if(examStarted) resetExam('window minimize or focus loss'); });
+
+  // === Access code start
+  examCodeBtn.addEventListener('click', function(){
+    if((examCodeInput.value || '').trim() === ACCESS_CODE){
+      codeError.style.display = 'none';
+      accessSection.style.display = 'none';
+      examForm.style.display = 'block';
+      examStarted = true;
+      totalSeconds = START_SECONDS;
+      updateTimerDisplay();
+      startTimer();
+    } else {
+      codeError.style.display = 'block';
+    }
+  });
+  examCodeInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); examCodeBtn.click(); }
+  });
+
+  // === Submission
+  examForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = (document.getElementById('studentName').value || '').trim();
+    if(!name){ alert('Please enter your name before submitting.'); return; }
+    submitAnswers(false);
+  });
+
+  function submitAnswers(isTimeout){
+    clearInterval(timerInterval);
+    examStarted = false;
+    const name = (document.getElementById('studentName').value || '').trim() || 'UNKNOWN';
+    const total = correctAnswers.length;
+    let correct = 0;
+    const report = [];
+
+    report.push('Student: ' + name);
+    report.push('Timestamp: ' + new Date().toLocaleString());
+    report.push('');
+
+    for(let i=1;i<=total;i++){
+      const sel = examForm.querySelector('[name=q' + i + ']');
+      const chosen = sel && sel.value ? sel.value : '';
+      const correctLetter = correctAnswers[i-1] || '';
+      const chosenText = sel ? (sel.options[sel.selectedIndex] ? sel.options[sel.selectedIndex].text : '') : '';
+      // find correct option text
+      let correctText = '';
+      if(sel){
+        for(let k=0;k<sel.options.length;k++){
+          if(sel.options[k].value === correctLetter){ correctText = sel.options[k].text; break; }
+        }
+      }
+      const isCorrect = chosen === correctLetter;
+      if(isCorrect) correct++;
+      report.push('Q' + i + ': ' + (isCorrect? '✅' : '❌') + ' Your: ' + (chosenText || '(blank)') + ' | Correct: ' + (correctText || '(not found)'));
+    }
+
+    const percent = Math.round((correct/total)*100);
+    const passed = percent >= PASS_PERCENT;
+    report.push('');
+    report.push('Score: ' + correct + '/' + total + ' (' + percent + '%)');
+    report.push('Result: ' + (passed ? 'PASSED' : 'FAILED'));
+
+    // UI feedback
+    submitMsg.style.display = 'block';
+    submitMsg.textContent =
+  'Exam submitted. Score: ' + correct + '/' + total +
+  ' (' + percent + '%) — ' + (passed ? 'PASSED ✅' : 'FAILED ❌');
+
+
+    // Prepare downloadable file
+    const blob = new Blob([report.join('\n')], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    downloadBtn.disabled = false;
+    downloadBtn.onclick = function(){
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = (name.replace(/\s+/g,'_') || 'answers') + '_results.txt';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },3000);
+    };
+
+    // disable form after submission to prevent re-submit tampering
+    examForm.querySelectorAll('select,input,button').forEach(el => {
+      if(el !== downloadBtn) el.disabled = true;
+    });
+  }
+
+  // initial display
+  updateTimerDisplay();
+})();
+</script>
+</body>
+</html>
